@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-css-animate</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-if="show">Hello World</div>
+		<button @click="handleClickbtn">click</button>
+		
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				show: true,
+			},
+			methods: {
+				handleClickbtn: function (){
+					this.show = !this.show;
+				},
+			},
+		});
+	</script>
+</body>
+</html>

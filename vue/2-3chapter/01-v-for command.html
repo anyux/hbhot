@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-for command</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text">
+		<button>提交</button>
+		<ul>
+			<li v-for="item in list">{{item}}</li>
+		</ul>
+	</div>
+	<script>
+		// v-for 指定循环
+		// list 指内容列表
+		// item 指元素
+		// 最终显示到页面上的为元素
+		var app = new Vue({
+			el: '#app',
+			data: {
+				list: ['first list','second list']
+			}
+		})
+	</script>
+	
+</body>
+</html>

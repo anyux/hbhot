@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-modle command</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="inputValue">
+		<button>提交</button>
+		<ul>
+			<li v-for="item in list">{{item}}</li>
+		</ul>
+	</div>
+	<script>
+		// v-model 实现input 输入框内容与 datt.inputValue的一致
+		// 任何一个变化,另一个也就会随之变化
+		// 在chrome console 中显示结果如下:
+		/*
+			app.$data.inputValue
+			"3333"
+			app.$data.inputValue = '345'
+			"345"
+			app.$data.inputValue = '345'
+			"345"
+			app.$data.inputValue
+			"345"
+		*/
+		var app = new Vue({
+			el: '#app',
+			data: {
+				list: [],
+				inputValue:'3333',
+			}
+		})
+	</script>
+	
+</body>
+</html>

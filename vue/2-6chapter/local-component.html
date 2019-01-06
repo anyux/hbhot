@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>local-component</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="inputValue">
+		<button v-on:click="handlerBtnClick">提交</button>
+		<ul>
+			<todo-item v-bind:content="item"
+					   v-for="item in list">
+				
+			</todo-item>
+		</ul>
+	</div>
+	<script>
+		var TodoItem = {
+			props: ['content'],
+			template: '<li>{{content}}</li>'
+		}
+		var app = new Vue({
+			el: '#app',
+			components:{
+				TodoItem: TodoItem,
+			},
+			data: {
+				list: [],
+				inputValue: ''
+			},
+			methods: {
+				handlerBtnClick: function () {
+					this.list.push(this.inputValue);
+					this.inputValue=''
+				}
+			}
+		})
+	</script>
+	
+</body>
+</html>

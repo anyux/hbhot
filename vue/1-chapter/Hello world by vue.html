@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello world by vue</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">{{message}}</div>
+	<script>
+		// el   用于限定 Vue 实例处理的DOM 范围
+		// data 用于设置数据内容
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello world!'
+			}
+		})
+	</script>
+	
+</body>
+</html>

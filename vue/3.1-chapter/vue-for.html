@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-for</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-for="(item,index) in items">
+			{{item}} ----- {{index}}
+		</div>		
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				items:[
+				'shz',
+				'yxc',
+				'yys',
+				'mzn',
+				'kyz',
+				'sywms',
+				'tjj',
+				],
+			},
+		});
+	</script>
+</body>
+</html>

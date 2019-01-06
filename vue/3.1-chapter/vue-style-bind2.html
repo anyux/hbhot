@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue-style-bind2</title>
+	<script src="../0-vue-js/vue.js"></script>
+	<style type="text/css">
+		.actived{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div @click="handleClickDiv"
+			 :style="[styleObj]"
+		>
+			{{message}}
+		</div>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello World',
+				styleObj: {
+					color: 'black',
+				},
+			},
+			methods: {
+				handleClickDiv: function () {
+					this.styleObj.color = this.styleObj.color === 'black' ? 'red': 'black';
+				}
+			},
+		});
+	</script>
+</body>
+</html>

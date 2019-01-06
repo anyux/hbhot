@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-html-ref-dom</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div ref="hello" @click="handleClickDiv" >
+			{{message}}
+		</div>
+	</div>	
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				message: 'hello world',
+			},
+			methods: {
+				handleClickDiv: function () {
+					console.log(this.$refs.hello)
+					console.log(this.$refs.hello.innerHTML)
+				}
+			},
+		});
+	</script>
+</body>
+</html>

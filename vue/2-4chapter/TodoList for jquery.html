@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TodoList for jquery</title>
+	<script src="../0-vue-js/jquery.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" id="inputValue">
+		<button id="btn">提交</button>
+		<ul id="list">
+			
+		</ul>
+	</div>
+	<script>
+		/*
+		M(模型层) V (视图,即上面HTML代码) P(控制层即下面的js代码)
+		*/
+		function Page() {
+			
+		}
+
+		$.extend(Page.prototype,{
+			init: function () {
+				this.bindEvents()
+			},
+			bindEvents: function () {
+				var btn = $("#btn");
+				btn.on('click',$.proxy(this.handleBtnClick,this))
+			},
+			handleBtnClick: function () {
+				var ulElem = $("#list");
+				var inputElem = $("#inputValue");
+				var mycontent = inputElem.val();
+				inputElem.val('')
+				ulElem.append('<li>'+mycontent+'</li>')
+			}
+		})
+
+		var page = new Page();
+		page.init();
+
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue-if-show2</title>
+	<script src="../0-vue-js/vue.js"></script>
+	<style>
+		.active{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div v-if="show === 'a' " v-html="message_a">
+		</div>
+		<div v-else-if="show === 'b' " v-html="message_b">
+		</div>
+		<div v-else v-html="message_c">
+		</div>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				show: false,
+				message_a: '<h1>a</h1>',
+				message_b: '<h2>b</h2>',
+				message_c: '<h3>c</h3>',
+			},
+		});
+	</script>
+</body>
+</html>

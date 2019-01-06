@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-css-transition2</title>
+	<script src="../0-vue-js/vue.js"></script>
+	<style type="text/css">
+		.fade-enter,
+		.fade-leave-to{
+			opacity: 0;
+		}
+		.fade-enter-active,
+		.fade-leave-active{
+			transition: opacity 3s;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<transition name="fade">
+		<div v-if="show">{{message}}</div>	
+		</transition>
+		<button @click="handleClickbtn">click</button>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data : {
+				show : true,
+				message: 'Hello World',
+			},
+			methods: {
+				handleClickbtn: function () {
+					this.show = !this.show;
+				}
+			},
+		});
+	</script>
+
+	
+</body>
+</html>

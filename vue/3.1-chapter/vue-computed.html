@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue-computed</title>
+	<script type="text/javascript" src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{fullName}}</p>
+		<p>{{age}}</p>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				firstName: 'anyu',
+				lastName: 'X',
+				age: 28,
+			},
+			// computed attr
+			computed:{
+				fullName: function () {
+					console.log('computed');
+					return this.firstName + ' ' + this.lastName;
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>

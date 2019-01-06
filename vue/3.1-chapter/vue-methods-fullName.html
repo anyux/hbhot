@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue-methods-fullName</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{fullName()}}</p>
+		<p>{{age}}</p>
+
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				firstName: 'anyu',
+				lastName: 'X',
+				age: 27,
+			},
+			methods:{
+				fullName: function () {
+					console.log('vue-methods-fullName');
+					return this.firstName + ' ' + this.lastName;
+				},
+			},
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-select</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<select name="" >
+			<option is="row"></option>
+			<option is="row"></option>
+			<option is="row"></option>
+			</select>	
+	</div>
+	<script>
+		Vue.component('row',{
+			template: '<option> this is row</option>',
+		});
+		var vm = new Vue({
+			el: '#app',
+
+		});
+	</script>
+</body>
+</html>

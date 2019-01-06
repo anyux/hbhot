@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bind-click-on-local-components</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<!-- // 提示 v-on:click="handerBtnClick" 等价于 @click="handerBtnClick" -->
+	<div id="app">
+		<input type="text" v-model="inputValue">
+		<button @click="handlerBtnClick">提交</button>
+		<ul>
+			<todo-item v-bind:content="item"
+			 		   v-for="item in list">
+			</todo-item>
+		</ul>
+	</div>
+	<script>
+
+		// 为组件提供点击事件
+		var TodoItem = {
+			props: ['content'],
+			template: "<li @click='handlerItemClick'>{{content}}</li>",
+			methods: {
+				handlerItemClick: function () {
+					alert(this.inputValue)
+				}
+			}
+
+		}
+		var app = new Vue({
+			el: "#app",
+			components: {
+				TodoItem: TodoItem,
+			},
+			data: {
+				list: [],
+				inputValue: '',
+			},
+			methods: {
+				handlerBtnClick: function () {
+					this.list.push(this.inputValue);
+					this.inputValue = '';
+				}
+			}
+		})
+	</script>
+	
+</body>
+</html>

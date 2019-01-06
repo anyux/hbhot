@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-slot</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<item>
+			<p>shz</p>
+		</item>
+	</div>
+	<script>
+		Vue.component('item',{
+			props:{
+				context:{
+					type: [ String , Number ],
+					default: 'default value',
+				}
+			},
+			template: `
+					<div>
+						<p>hello</p>
+						<slot></slot>
+					</div>`
+		});
+		var vm = new Vue({
+			el: '#app',
+		});
+	</script>
+</body>
+</html>

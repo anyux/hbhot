@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue-template</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="root">
+		<div>
+			{{message}}
+		</div>
+		<div v-text="message">
+			
+		</div>
+		<div v-html="message">
+			
+		</div>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				message: '<h1>hello world</h1>',
+			}
+		})
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-slot</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<item header="hello">
+			<div class="header"  slot="header" >header</div>
+			<div class="footer"  slot="footer" >footer</div>
+		</item>
+	</div>
+	<script>
+		Vue.component('item',{
+			props: {
+				header: {
+					type: [String,Number],
+					// required: true,
+					validator: function (value) {
+						console.log(value);
+						return value;
+
+					},
+					default: 'default value',
+				},
+			},
+			data: function () {
+				var message = {
+					message: this.header,
+				};
+				return message;
+			},
+			// template: `
+			// <div>
+			// {{message}}	
+			// </div>
+			// 		`
+			template: `
+				<div>
+					<slot name="header"></slot>			
+					<div class="context">context</div>
+					<slot name="footer"></slot>
+					<p>{{message}}</p>
+				</div>		
+					`,
+
+		});
+		var vm = new Vue({
+			el: '#app',
+		});
+	</script>
+</body>
+</html>

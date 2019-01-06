@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-if-show-3</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+<!-- 		<div v-if="show" v-html="user">
+		</div>
+		<div v-else v-html="email"></div> -->
+		<div v-if="show">
+			username: <input type="text" key='username' />
+		</div>
+		<div v-else>
+			email: <input type="email" key='email' name="" value="" placeholder="">
+		</div>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				show: '',
+				// user: 'username: <input type="text" />',
+				// email: 'email: <input type="email" name="" value="" placeholder="">',
+			},
+		});
+	</script>
+</body>
+</html>

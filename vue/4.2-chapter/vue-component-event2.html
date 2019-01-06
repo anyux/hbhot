@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>给组件绑定原生事件2</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<child ref="click" @click="handleClickDiv"></child>		
+	</div>
+	<script>
+		Vue.component('child',{
+			data:function(){
+				var message = {
+					message: 'hello World',
+				};
+				return message;
+			},
+			template: '<div @click="subhandleClickDiv">{{message}}</div>',
+			methods: {
+				subhandleClickDiv: function (){
+					console.log(this.message);
+					this.$emit('click')
+				},
+			}
+		})
+		var vm = new Vue({
+			el: '#app',
+			data: {
+
+			},
+			methods: {
+				handleClickDiv: function (){
+					console.log(this.$refs.click.message);
+				},
+			}
+		});
+	</script>
+</body>
+</html>

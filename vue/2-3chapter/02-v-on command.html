@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-on command</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text">
+		<button v-on:click="handerBtnClick">提交</button>
+		<ul>
+			<li v-for="item in list">{{item}}</li>
+		</ul>
+	</div>
+	<script>
+		// v-on 绑定指令
+		// v-on:click="handerBtnClick"
+		// click 指绑定的事件
+		// handerBtnClick 指触发的事件 位于 Vue 实例中 methods下
+		// 结构如下:
+		/*
+				methods:{
+					handerBtnClick:function () {
+						alert("click")
+					}
+
+				}
+		*/
+		var app = new Vue({
+			el: '#app',
+			data:{
+				list: ['first item','second item'],
+			},
+			methods:{
+				handerBtnClick:function () {
+					alert("click")
+				}
+
+			}
+
+		})
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-conponent-data-sum-step</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<mycomponent ref="one" :counter="3" @change="totalChange"></mycomponent>
+		<mycomponent ref="two" :counter="4" @change="totalChange"></mycomponent>
+		<div v-text="total"></div>
+	</div>
+	<script>
+		var mycomponent = {
+			props: ['counter'],
+			data: function () {
+				var number  = {number: this.counter,};
+				// console.log(this.counter);
+				return number;
+			},
+			template: '<div @click="handlerClickDiv">{{number}}</div>',
+			methods: {
+				handlerClickDiv: function (){
+					this.number += 2;
+					// step 2
+					this.$emit('change',2);
+				}
+			},
+		};
+		var vm = new Vue({
+			el: '#app',
+			components: {
+				mycomponent: mycomponent,
+			},
+			data: {
+				// total: this.$refs.one.counter + this.$refs.two.counter
+				total: 7,
+			},
+			methods: {
+				totalChange: function (step){
+					// console.log(this.$refs.one.number);
+					// console.log(this.$refs.two.number);
+					this.total += step;
+				},
+			},
+		});
+	</script>
+	
+</body>
+</html>

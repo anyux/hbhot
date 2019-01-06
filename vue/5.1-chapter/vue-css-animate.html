@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-css-animate</title>
+	<script src="../0-vue-js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../0-vue-js/animate.css">
+</head>
+<body>
+	<div id="app">
+		<transition enter-active-class="animated fadeInUpBig" leave-active-class="animated flipInY">
+			<div v-if="show">{{message}}</div>
+		</transition>
+			<button @click="handleClickbtn">click</button>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				show: true,
+				message: "Hello World",
+			},
+			methods: {
+				handleClickbtn: function () {
+					this.show = !this.show;
+				},
+			},
+		});
+	</script>
+	
+</body>
+</html>

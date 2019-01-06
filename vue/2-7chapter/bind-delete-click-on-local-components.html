@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bind-click-on-local-components</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<!-- // 提示 v-on:click="handerBtnClick" 等价于 @click="handerBtnClick" -->
+	<div id="app">
+		<input type="text" v-model="inputValue">
+		<button @click="handlerBtnClick">提交</button>
+		<ul>
+	 <!-- 提示 @delete="handlerItemDelete"表示在创建子组件的同时,也监听子组件删除的事件
+	 即了组件删除事件发生时,会执行父组件的 handlerItemDelete方法,因此要在父组件中创建 handlerItemDelete方法
+	  -->
+			<todo-item v-bind:content="item"
+			 		   v-for="item in list"
+			 		   @delete="handlerItemDelete">
+			</todo-item>
+		</ul>
+	</div>
+	<script>
+
+		// 为组件提供点击事件
+		var TodoItem = {
+			props: ['content'],
+			template: "<li @click='handlerItemClick'>{{content}}</li>",
+			methods: {
+				handlerItemClick: function () {
+					// 使用$emit()方法
+					this.$emit("delete")
+				}
+			}
+
+		}
+		var app = new Vue({
+			el: "#app",
+			components: {
+				TodoItem: TodoItem,
+			},
+			data: {
+				list: [],
+				inputValue: '',
+			},
+			methods: {
+				handlerBtnClick: function () {
+					this.list.push(this.inputValue);
+					this.inputValue = '';
+				},
+				handlerItemDelete: function () {
+					this.list=[]				}
+			}
+		})
+	</script>
+	
+</body>
+</html>

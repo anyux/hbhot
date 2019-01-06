@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件参数校验与非 props 特性</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<child counter="hello world"></child>
+		<!-- <child></child> -->
+	</div>
+	<script>
+		Vue.component('child',{
+			// props: ['counter'],
+			// props: {
+			// 	'counter': String,
+			// },
+			props: {
+				'counter': {
+					type: [Number,String],
+					// required: true,
+					// default: 'default value',
+					validator: function (value){
+						console.log('obj');
+						return value;
+					},
+				},
+			},
+			template: '<div>{{number}}</div>',
+			data: function () {
+				var number = {
+					number: this.counter,
+				};
+				return number;
+			},
+		});
+		var vm = new Vue({
+			el: '#app',
+		});
+	</script>	
+</body>
+</html>
