@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-css-animate-transition2</title>
+	<script src="../0-vue-js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../0-vue-js/animate.css">
+	<style type="text/css">
+	.fade-enter,.fade-leave{
+		opacity: 0;
+	}
+	.fade-enter-active,.fade-leave-active{
+		transition: opacity 30s;
+	}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<transition 
+		name="fade" 		
+		type="transform"
+		appear
+		enter-active-class="animated fadeInUpBig .fade-enter-active" 
+		leave-active-class="animated flipInY .fade-leave-active"
+		appear-enter-class="animated fadeInUpBig"
+		>
+			<child-one v-if='show' v-once></child-one>		
+		</transition>
+		<button @click='handleClickbtn'>Click</button>
+	</div>	
+	<script>
+		Vue.component('child-one',{
+			data: function () {
+				var message = {
+					message: 'Hello World',
+				};
+				return message;
+			},
+			template: 
+			`
+			<div v-once>
+				{{this.message}}
+			</div>
+			`,
+		});
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				show: true,
+			},
+			methods: {
+				handleClickbtn: function () {
+					this.show = !this.show;
+				},
+			},
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-css-animate-transition</title>
+	<script src="../0-vue-js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../0-vue-js/animate.css">
+</head>
+<body>
+	<div id="app">
+		<!-- 
+		appear the first load page show the animate
+		 -->
+		<transition 
+		name="fade" 
+		appear
+		enter-active-class="animated fadeInUpBig" 
+		leave-active-class="animated flipInY"
+		appear-enter-class="animated fadeInUpBig"
+		>
+			<child-one v-if="show" v-once></child-one>
+		</transition>
+		<button @click="handleClickbtn">click</button>
+	</div>
+	<script>
+		Vue.component('child-one',{
+			data: function (){
+				var message = {
+					message: 'Hello World',
+				};
+				return message;
+			},
+			template: 
+			`
+			<div v-once>{{message}}</div>
+			`
+		});
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				show: true,
+			},
+			methods: {
+				handleClickbtn: function () {
+					this.show = !this.show;
+				},
+			},
+		})
+	</script>
+	
+</body>
+</html>
