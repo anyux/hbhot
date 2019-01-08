@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-js-animate</title>
+	<script src="../0-vue-js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<transition
+		name="fade"
+		@before-enter="beforeEnter"
+		>
+			<div v-if="show" v-once>{{message}}</div>
+		</transition>
+		<button @click="handleClickbtn">Click</button>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				message: 'Hello World',
+				show: true,
+			},
+			methods: {
+				handleClickbtn: function () {
+					this.show = !this.show;
+				},
+				beforeEnter: function (el) {
+					el.style.color = 'red';
+					console.log(this.message);
+				},
+			},
+		});
+	</script>
+	
+</body>
+</html>
