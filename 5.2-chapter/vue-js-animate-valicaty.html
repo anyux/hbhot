@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-js-animate-valicaty</title>
+	<script src="../0-vue-js/vue.js"></script>
+	<script src="../0-vue-js/velocity.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<transition
+		name="fade"
+		@before-enter="beforeEnter"
+		@enter="Enter"
+		@after-enter="afterEnter"
+		>
+			<div v-if="show" v-once>{{message}}</div>
+		</transition>
+			<button @click="handleClickBtn">Click</button>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello World',
+				show: true,
+			},
+			methods: {
+				handleClickBtn: function () {
+					this.show = !this.show;
+				},
+				beforeEnter: function (el) {
+					el.style.color="red";
+				},
+				Enter: function (el,done) {
+					el.velocity(
+					{
+						opacity:0,
+					},
+					{
+						complete: done
+					},
+					);
+
+				},
+				afterEnter: function (el) {
+					el.velocity(
+					{
+						opacity:1,
+					},
+					);
+				},
+			}
+		});
+	</script>
+	
+</body>
+</html>

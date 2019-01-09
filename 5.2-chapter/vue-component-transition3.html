@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-component-transition</title>
+	<script src="../0-vue-js/vue.js"></script>
+	<style type="text/css">
+		.v-enter,.v-leave{
+			opacity: 0;
+		}
+		.v-enter-active,.v-leave-active{
+			transition: opacity 1s;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<transition
+		mode="out-in"
+		>
+			<item content="msg" :is="type"></item>
+		</transition>
+		<button @click='handleClickBtn'>Click</button>
+	</div>
+	<script>
+		Vue.component('child-one',{
+			data: function () {
+				var message = {
+					message: this.content ? 'bye world' : 'Hello World' ,
+				};
+				return message;
+			},
+			template: '<div>{{this.message}}</div>',
+		});
+
+		Vue.component('child-two',{
+			data: function () {
+				var message = {
+					message: this.content ? 'Hello World' : 'bye world',
+				};
+				return message;
+			},
+			template: '<div>{{this.message}}</div>',
+		});
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				hello: 'Hello World',
+				bye: 'bye world',
+				// show: true,
+				type: 'child-one',
+				msg: 'Hello World',
+			},
+			methods: {
+				handleClickBtn: function () {
+					this.type = this.type === 'child-one' ? 'child-two' : 'child-one';
+					this.msg = this.msg === this.hello ? this.bye : this.hello;
+				},
+			}
+		});
+
+	</script>
+	
+</body>
+</html>
